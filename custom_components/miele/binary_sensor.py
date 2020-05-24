@@ -3,7 +3,7 @@ import logging
 from datetime import timedelta
 
 from homeassistant.helpers.entity import Entity
-from homeassistant.components.binary_sensor import BinarySensorDevice
+from homeassistant.components.binary_sensor import BinarySensorEntity
 
 from custom_components.miele import DOMAIN as MIELE_DOMAIN, DATA_DEVICES
 
@@ -45,7 +45,7 @@ def update_device_state():
     for device in ALL_DEVICES:
         device.async_schedule_update_ha_state(True)
 
-class MieleBinarySensor(BinarySensorDevice):
+class MieleBinarySensor(BinarySensorEntity):
 
     def __init__(self, hass, device, key):
         self._hass = hass

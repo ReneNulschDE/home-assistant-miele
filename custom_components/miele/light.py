@@ -3,7 +3,7 @@ import logging
 from datetime import timedelta
 
 from homeassistant.helpers.entity import Entity
-from homeassistant.components.light import Light
+from homeassistant.components.light import LightEntity
 
 from custom_components.miele import DOMAIN as MIELE_DOMAIN, DATA_CLIENT, DATA_DEVICES
 
@@ -35,7 +35,7 @@ def update_device_state():
     for device in ALL_DEVICES:
         device.async_schedule_update_ha_state(True)
 
-class MieleLight(Light):
+class MieleLight(LightEntity):
     def __init__(self, hass, device):
         self._hass = hass
         self._device = device
